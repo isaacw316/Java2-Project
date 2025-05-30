@@ -54,11 +54,19 @@ public class MRPSystem {
         cardPanel = new JPanel(cardLayout);
 
         for (int i = 0; i < buttons.length; i++) {
-            JPanel panel = new JPanel();
-            JLabel label = new JLabel(buttons[i]);
-            panel.add(label);
-            cardPanel.add(panel, cardNames[i]);
-        }
+            JPanel panel;
+            switch (cardNames[i]) {
+                case "card1":
+                    panel = new UpdateStockPanel();
+                    break;
+                default:
+                    panel = new JPanel();
+                    panel.add(new JLabel(buttons[i]));
+    }
+    cardPanel.add(panel, cardNames[i]);
+}
+
+
 
         frame.setLayout(new BorderLayout());
         frame.add(menuPanel, BorderLayout.WEST);
@@ -71,3 +79,6 @@ public class MRPSystem {
         SwingUtilities.invokeLater(MRPSystem::new);
     }
 }
+
+
+
